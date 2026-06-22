@@ -11,7 +11,7 @@ const btnLimpiar=document.querySelector(".limpiar")
 let jsonFilter=tareas
 //funcion para llenar todos los registros del JSON
 let autocomplete = (tareas2) => {
-  let html = ""; // 🔥 RESET AQUÍ
+  let html = "";
 
   for (const tarea of tareas2) {
     html += `
