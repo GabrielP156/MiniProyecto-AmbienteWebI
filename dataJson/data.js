@@ -1,0 +1,95 @@
+const data=[
+  {
+    "nombre_tarea": "Proyecto Final de Desarrollo Web",
+    "materia": "Programación Web",
+    "prioridad": "Alta",
+    "descripcion": "Desarrollo de una aplicación web con HTML, CSS y JavaScript que incluya CRUD y consumo de API.",
+    "fecha_limite": "30/06/2026",
+    "estado_inicial": "Pendiente",
+    "puntaje_porcentaje": 40
+  },
+  {
+    "nombre_tarea": "Informe de Metodologías Ágiles",
+    "materia": "Ingeniería de Software",
+    "prioridad": "Media",
+    "descripcion": "Resumen comparativo entre metodologías ágiles y tradicionales con conclusiones personales.",
+    "fecha_limite": "05/07/2026",
+    "estado_inicial": "Pendiente",
+    "puntaje_porcentaje": 10
+  },
+  {
+    "nombre_tarea": "Ejercicios de Integrales",
+    "materia": "Cálculo Integral",
+    "prioridad": "Alta",
+    "descripcion": "Resolución de integrales por sustitución, partes y fracciones parciales.",
+    "fecha_limite": "25/06/2026",
+    "estado_inicial": "En progreso",
+    "puntaje_porcentaje": 15
+  },
+  {
+    "nombre_tarea": "Quiz de JavaScript",
+    "materia": "Programación Web",
+    "prioridad": "Alta",
+    "descripcion": "Evaluación sobre arrays, objetos, funciones y manipulación del DOM.",
+    "fecha_limite": "22/06/2026",
+    "estado_inicial": "Pendiente",
+    "puntaje_porcentaje": 5
+  },
+  {
+    "nombre_tarea": "Diseño de Base de Datos",
+    "materia": "Bases de Datos",
+    "prioridad": "Media",
+    "descripcion": "Modelado entidad-relación y normalización hasta tercera forma normal.",
+    "fecha_limite": "02/07/2026",
+    "estado_inicial": "Pendiente",
+    "puntaje_porcentaje": 20
+  },
+  {
+    "nombre_tarea": "Presentación de Scrum",
+    "materia": "Ingeniería de Software",
+    "prioridad": "Baja",
+    "descripcion": "Exposición sobre roles, eventos y artefactos en Scrum.",
+    "fecha_limite": "28/06/2026",
+    "estado_inicial": "Pendiente",
+    "puntaje_porcentaje": 8
+  },
+  {
+    "nombre_tarea": "Laboratorio de Redes",
+    "materia": "Redes de Computadoras",
+    "prioridad": "Alta",
+    "descripcion": "Configuración de routers y simulación de red en Packet Tracer.",
+    "fecha_limite": "27/06/2026",
+    "estado_inicial": "En progreso",
+    "puntaje_porcentaje": 25
+  },
+  {
+    "nombre_tarea": "Ensayo de Ética Profesional",
+    "materia": "Ética Profesional",
+    "prioridad": "Media",
+    "descripcion": "Redacción sobre dilemas éticos en el desarrollo de software.",
+    "fecha_limite": "10/07/2026",
+    "estado_inicial": "Pendiente",
+    "puntaje_porcentaje": 10
+  },
+  {
+    "nombre_tarea": "Práctica de Git y GitHub",
+    "materia": "Herramientas de Desarrollo",
+    "prioridad": "Alta",
+    "descripcion": "Uso de ramas, commits y merge en repositorio colaborativo.",
+    "fecha_limite": "24/06/2026",
+    "estado_inicial": "En progreso",
+    "puntaje_porcentaje": 12
+  },
+  {
+    "nombre_tarea": "Examen Parcial de Álgebra",
+    "materia": "Álgebra Lineal",
+    "prioridad": "Alta",
+    "descripcion": "Evaluación sobre matrices, determinantes y sistemas de ecuaciones.",
+    "fecha_limite": "29/06/2026",
+    "estado_inicial": "Pendiente",
+    "puntaje_porcentaje": 30
+  }
+]
+if (!localStorage.getItem("data")) {
+  localStorage.setItem("data", JSON.stringify(data));
+}
