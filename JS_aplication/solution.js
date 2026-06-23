@@ -1,36 +1,33 @@
-const contenedor=document.querySelector(".main_wrapper")
-const pendienteElement=document.querySelector(".rojo")
-const completadoElement=document.querySelector(".verde")
-const progresoElement=document.querySelector(".amarillo")
-const totalElement=document.querySelector(".blanco")
-const btnBuscar=document.querySelector(".searchBtn")
-const inputBuscar=document.querySelector(".search__main")
-const btnLimpiar=document.querySelector(".limpiar")
-const reset=document.querySelector(".reset")
+const contenedor = document.querySelector(".main_wrapper")
+const pendienteElement = document.querySelector(".rojo")
+const completadoElement = document.querySelector(".verde")
+const progresoElement = document.querySelector(".amarillo")
+const totalElement = document.querySelector(".blanco")
+const btnBuscar = document.querySelector(".searchBtn")
+const inputBuscar = document.querySelector(".search__main")
+const btnLimpiar = document.querySelector(".limpiar")
 
 let tareas = []
 
-//funcion que agrega el LocalStorage en caso de no Existir
 fetch("Json/data.json")
   .then(res => res.json())
   .then(data => {
     if (!localStorage.getItem("data")) {
       localStorage.setItem("data", JSON.stringify(data))
     }
+    tareas = JSON.parse(localStorage.getItem("data"))
+    totalesFijos = tareas
+    autocomplete(tareas)
+    argumentos(tareas)
   })
 
-
-  //obtiene un array de lo que esta en el LocalStorage
-  function obtenerTareas() {
-      return JSON.parse(localStorage.getItem("data")) ?? [];
-  }
-
-
+let totalesFijos = []
+let jsonFilter = tareas
 //funcion para llenar todos los registros del JSON
-let autocomplete = (tareas) => {
+let autocomplete = (tareas2) => {
   let html = "";
 
-  for (const tarea of tareas) {
+  for (const tarea of tareas2) {
     html += `
       <div class="card">
         <h3>${tarea.nombre_tarea}</h3>
@@ -54,29 +51,28 @@ function normalizarTexto(texto) {
     .replace(/[\u0300-\u036f]/g, "");
 }
 
-
 //Funcion que rellena los campos de cada tarea
-let argumentos=(jsonFilter2)=>{
-let pendientes=0
-let completadas=0
-let progreso=0
-let total=0
-for (const item of jsonFilter2) {
- if(item.estado_inicial==="Pendiente"){
-    pendientes+=1
- }else{
-  if(item.estado_inicial==="En progreso"){
-    progreso+=1
- }else{
-    completadas+=1
- }
- }
-}
-total=jsonFilter2.length
-pendienteElement.innerHTML=pendientes
-completadoElement.innerHTML=completadas
-progresoElement.innerHTML=progreso
-totalElement.innerHTML=total
+let argumentos = (jsonFilter2) => {
+  let pendientes = 0
+  let completadas = 0
+  let progreso = 0
+  let total = 0
+  for (const item of jsonFilter2) {
+    if (item.estado_inicial === "Pendiente") {
+      pendientes += 1
+    } else {
+      if (item.estado_inicial === "En progreso") {
+        progreso += 1
+      } else {
+        completadas += 1
+      }
+    }
+  }
+  total = jsonFilter2.length
+  pendienteElement.innerHTML = pendientes
+  completadoElement.innerHTML = completadas
+  progresoElement.innerHTML = progreso
+  totalElement.innerHTML = total
 
 }
 
@@ -112,26 +108,20 @@ btnBuscar.addEventListener("click", () => {
       arrayNuevo.push(tarea);
     }
   }
-  let arr=filtros(arrayNuevo)
+  let arr = filtros(arrayNuevo)
   autocomplete(arr);
-  argumentos(arr)
+  argumentos(totalesFijos)
 });
 
 
 
 
-btnLimpiar.addEventListener("click",()=>{
-inputBuscar.value=""
-autocomplete(obtenerTareas())
-argumentos(obtenerTareas())
-selectEstado.selectedIndex = 0;
-selectPrioridad.selectedIndex = 0;
-reset.reset();
+btnLimpiar.addEventListener("click", () => {
+  inputBuscar.value = ""
+  autocomplete(tareas)
+  argumentos(tareas)
+  document.getElementById("estado").selectedIndex = 0
+  document.getElementById("prioridad").selectedIndex = 0
 
 })
 
-
-//invocacion de metodos
-argumentos(obtenerTareas())
-autocomplete(obtenerTareas())
-console.log(obtenerTareas())
