@@ -1,4 +1,4 @@
-const data=[
+[
   {
     "nombre_tarea": "Proyecto Final de Desarrollo Web",
     "materia": "Programación Web",
@@ -90,6 +90,3 @@ const data=[
     "puntaje_porcentaje": 30
   }
 ]
-if (!localStorage.getItem("data")) {
-  localStorage.setItem("data", JSON.stringify(data));
-}

@@ -7,8 +7,23 @@ const totalElement=document.querySelector(".blanco")
 const btnBuscar=document.querySelector(".searchBtn")
 const inputBuscar=document.querySelector(".search__main")
 const btnLimpiar=document.querySelector(".limpiar")
+const reset=document.querySelector(".reset")
 
-let jsonFilter=tareas
+let tareas = []
+
+fetch("Json/data.json")
+  .then(res => res.json())
+  .then(data => {
+    if (!localStorage.getItem("data")) {
+      localStorage.setItem("data", JSON.stringify(data))
+    }
+    tareas = JSON.parse(localStorage.getItem("data"))
+    totalesFijos = tareas
+    autocomplete(tareas)
+    argumentos(tareas)
+  })
+
+  
 //funcion para llenar todos los registros del JSON
 let autocomplete = (tareas2) => {
   let html = "";
@@ -108,6 +123,7 @@ autocomplete(tareas)
 argumentos(jsonFilter)
 selectEstado.selectedIndex = 0;
 selectPrioridad.selectedIndex = 0;
+reset.reset();
 
 })
 
