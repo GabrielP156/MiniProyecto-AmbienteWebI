@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GestaTarea</title>
-  <link rel="stylesheet" href="css/Gestatarea.css"/>
+  <link rel="stylesheet" href="css/Gestatarea.css" />
 </head>
+
 <body>
 
   <!-- NAVBAR -->
@@ -15,8 +17,8 @@
       GestaTarea
     </div>
     <div class="nav-links">
-      <a href="#" class="active">Inicio</a>
-      <a href="#">Mis Tareas</a>
+      <a href="Gestatarea.html" class="active">Inicio</a>
+      <a href="MisTareas.html">Mis Tareas</a>
       <a href="#">Registrar Tarea</a>
       <a href="#">Notas</a>
       <a href="#">Calculadora de Notas</a>
@@ -70,10 +72,11 @@
       <!-- Contenido -->
       <div class="hero-texto">
         <h1 class="titulo">Gesta<span class="naranja">Tarea</span></h1>
-        <p class="subtitulo">Registra tus tareas, calcula tus notas y lleva el control de tu semestre universitario, todo en un solo lugar.</p>
+        <p class="subtitulo">Registra tus tareas, calcula tus notas y lleva el control de tu semestre universitario,
+          todo en un solo lugar.</p>
         <div class="botones">
           <a href="#" class="btn-naranja">+ Registrar Tarea</a>
-          <a href="#" class="btn-gris">Ver mis tareas &rarr;</a>
+          <a href="MisTareas.html" class="btn-gris">Ver mis tareas &rarr;</a>
         </div>
       </div>
 
@@ -83,7 +86,7 @@
   <!-- ESTADISTICAS -->
   <div class="stats">
     <div class="stat">
-      <div class="stat-num">08</div>
+      <div class="stat-num" id="statActivas">--</div>
       <div class="stat-label">TAREAS ACTIVAS</div>
     </div>
     <div class="stat">
@@ -91,7 +94,7 @@
       <div class="stat-label">PROMEDIO ACTUAL</div>
     </div>
     <div class="stat">
-      <div class="stat-num">3</div>
+      <div class="stat-num" id="statSemana">--</div>
       <div class="stat-label">ENTREGAS ESTA SEMANA</div>
     </div>
     <div class="stat">
@@ -103,9 +106,46 @@
   <!-- FOOTER -->
   <div class="footer">
     <span class="footer-link">&#9312; utn.ac.cr</span>
-    <p class="footer-desc">GestaTarea &mdash; Dise&ntilde;ada para estudiantes de la <b>UTN</b>.<br>Administra tus compromisos acad&eacute;micos con claridad.</p>
+    <p class="footer-desc">GestaTarea &mdash; Dise&ntilde;ada para estudiantes de la <b>UTN</b>.<br>Administra tus
+      compromisos acad&eacute;micos con claridad.</p>
     <span class="footer-copy">&copy; 2026 GestaTarea</span>
   </div>
+  <script src="dataJson/data.js"></script>
+  <script>
+  fetch("Json/data.json")
+    .then(res => res.json())
+    .then(data => {
+      localStorage.setItem("data", JSON.stringify(data))
 
+      if (!localStorage.getItem("estadosTareas")) {
+        const estados = {}
+        for (const t of data) {
+          estados[t.id] = t.estado_inicial === "Completada"
+        }
+        localStorage.setItem("estadosTareas", JSON.stringify(estados))
+      }
+
+      if (!localStorage.getItem("tareasUsuario")) {
+        localStorage.setItem("tareasUsuario", JSON.stringify([]))
+      }
+
+      const datos = JSON.parse(localStorage.getItem("data"))
+
+      document.getElementById("statActivas").textContent =
+        datos.filter(t => t.estado_inicial !== "Completada").length
+
+      const hoy = new Date()
+      const fin = new Date()
+      fin.setDate(hoy.getDate() + 7)
+
+      document.getElementById("statSemana").textContent =
+        datos.filter(t => {
+          const p = t.fecha_limite.split("/")
+          const fecha = new Date(p[2], p[1] - 1, p[0])
+          return fecha >= hoy && fecha <= fin
+        }).length
+    })
+</script>
 </body>
+
 </html>
