@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/Gestatarea.css">
+    <link rel="stylesheet" href="css/Soluciones.css">
+    <link rel="stylesheet" href="css/estandar.css">
     <title>Document</title>
 </head>
 
@@ -19,7 +20,7 @@
             <div class="nav-links" id="navLinks">
                 <a href="Gestatarea.html">Inicio</a>
                 <a href="MisTareas.html" class="active">Mis Tareas</a>
-                <a href="#">Registrar Tarea</a>
+                <a href="Registrar.html">Registrar Tarea</a>
                 <a href="Notas.html">Notas</a>
                 <a href="#">Calculadora de Notas</a>
             </div>
@@ -39,7 +40,8 @@
                         <input type="text" class="search__main" id="searchInput" placeholder="Escribe para buscar...">
                     </section>
                     <div class="option__container">
-                        <select id="estado">
+                        <form action="" class="reset">
+                            <select id="estado">
                             <option value="" selected disabled>Seleccione un estado</option>
                             <option value="pendiente">Pendiente</option>
                             <option value="en progreso">En progreso</option>
@@ -52,6 +54,10 @@
                             <option value="Media">Media</option>
                             <option value="Baja">Baja</option>
                         </select>
+                        </form>
+                        
+
+
                     </div>
                     <section class="search">
                         <button class="searchBtn">Buscar</button>
@@ -82,6 +88,7 @@
 
         </div>
 
+       
     </main>
 
 </body>

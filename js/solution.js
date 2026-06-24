@@ -110,7 +110,7 @@ btnBuscar.addEventListener("click", () => {
   }
   let arr = filtros(arrayNuevo)
   autocomplete(arr);
-  argumentos(totalesFijos)
+  argumentos(arr)
 });
 
 

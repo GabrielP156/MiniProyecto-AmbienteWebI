@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/Registro.css">
+    <link rel="stylesheet" href="css/estandar.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <div class="logo-icon">&#10003;</div>
+            GestaTarea
+        </div>
+        <div class="nav-links">
+            <a href="Gestatarea.html" class="active">Inicio</a>
+            <a href="MisTareas.html">Mis Tareas</a>
+            <a href="Registrar.html">Registrar Tarea</a>
+            <a href="Notas.html">Notas</a>
+            <a href="#">Calculadora de Notas</a>
+        </div>
+    </div>
+    <main>
+        <div class="master__text">
+            <div class="text__container">
+                <h1 class="h1__Solution">Registrar Tareas</h1>
+                <p class="main__context">En este catalogo puedes agregar,eliminar y modificar registros</p>
+            </div>
+
+            <p class="info-tabla">
+                Haz doble clic sobre una tarea para abrir las opciones de edición.
+            </p>
+            <div>
+
+            </div>
+
+        </div>
+
+        <div class="main__wrapperA">
+            <div class="main__form-container">
+                <form action="" class="form_agregar">
+                    <div class="text-container-form">
+                        <label for="nombre_tarea">Nombre de la tarea</label>
+                        <input type="text" id="nombre_tarea" name="nombre_tarea" placeholder="Ej: Laboratorio de Redes"
+                            required>
+
+                        <label for="materia">Materia</label>
+                        <input type="text" id="materia" name="materia" placeholder="Ej: Redes de Computadoras" required>
+                    </div>
+
+                    <div class="section__container">
+                        <label for="prioridad">Prioridad</label>
+                        <select id="prioridad" name="prioridad" class="pequeño" required>
+                            <option value="Alta">Alta</option>
+                            <option value="Media">Media</option>
+                            <option value="Baja">Baja</option>
+                        </select>
+
+                        <label class="segundoSection" for="estado_inicial">Estado inicial</label>
+                        <select id="estado_inicial" name="estado_inicial" class="pequeño" required>
+                            <option value="Pendiente">Pendiente</option>
+                            <option value="En progreso">En progreso</option>
+                            <option value="Completada">Completada</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="fecha_limite" class="labels">Fecha límite</label>
+                        <input type="date" id="fecha_limite" name="fecha_limite" required>
+
+                        <label for="puntaje_porcentaje" class="labels">Puntaje (%)</label>
+                        <input type="number" id="puntaje_porcentaje" name="puntaje_porcentaje" min="0" max="100"
+                            placeholder="0 - 100" required>
+                    </div>
+
+                    <label for="descripcion">Descripción</label>
+                    <textarea id="descripcion" name="descripcion" rows="4"
+                        placeholder="Descripción de la tarea"></textarea>
+
+                    <div class="btn__container">
+                        <button type="submit" id="AgregarBtn" class="searchBtn">Guardar Tarea</button>
+                    </div>
+                </form>
+
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Materia</th>
+                        <th>Prioridad</th>
+                        <th>Entrega</th>
+                        <th>Estado</th>
+                        <th>Porcentaje</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tabla-tareas">
+
+                </tbody>
+            </table>
+    </main>
+
+    <aside>
+        <div class="main__form-container form2">
+            <form action="" class="form_agregar">
+                <div class="text-container-form">
+                    <label for="nombre_tarea">Nombre de la tarea</label>
+                    <input class="input__nombre" type="text" id="nombre_tarea" name="nombre_tarea"
+                        placeholder="Ej: Laboratorio de Redes" required>
+
+                    <label for="materia">Materia</label>
+                    <input class="input__materia" type="text" id="materia" name="materia"
+                        placeholder="Ej: Redes de Computadoras" required>
+                </div>
+
+                <div class="section__container">
+                    <label for="prioridad">Prioridad</label>
+                    <select id="prioridad" name="prioridad" class="pequeño input__prioridad" required>
+                        <option value="Alta">Alta</option>
+                        <option value="Media">Media</option>
+                        <option value="Baja">Baja</option>
+                    </select>
+
+                    <label class="segundoSection" for="estado_inicial">Estado inicial</label>
+                    <select id="estado_inicial" name="estado_inicial" class="pequeño input__estado" required>
+                        <option value="Pendiente">Pendiente</option>
+                        <option value="En progreso">En progreso</option>
+                        <option value="Completada">Completada</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="fecha_limite" class="labels">Fecha límite</label>
+                    <input type="date" id="fecha_limite" name="fecha_limite" class="input__fecha" required>
+
+                    <label for="puntaje_porcentaje" class="labels">Puntaje (%)</label>
+                    <input type="number" id="puntaje_porcentaje" name="puntaje_porcentaje" class="input__puntaje"
+                        min="0" max="100" placeholder="0 - 100" required>
+                </div>
+
+                <label for="descripcion">Descripción</label>
+                <textarea id="descripcion" name="descripcion" rows="4" class="input__descripcion"
+                    placeholder="Descripción de la tarea"></textarea>
+
+                <div class="btn__container">
+                    <button type="submit" id="AgregarBtn" class="searchBtn AceptarCambios">Guardar Tarea</button>
+                    <button type="submit" id="AgregarBtn" class="searchBtn cancelar">Cancelar</button>
+                </div>
+            </form>
+
+        </div>
+    </aside>
+    </div>
+    <div class="form__action">
+        <div class="icon_container">
+            <img src="img/icons8-circled-x-50.png" class="icon_Cerrar" alt="">
+        </div>
+        <p class="action__label">INGRESE LA ACCIÓN QUE DESEA REALIZAR</p>
+        <div class="btn__container2">
+            <button class=" searchBtn Aceptar">Actualizar</button>
+            <button class="Eliminar searchBtn">Eliminar</button>
+        </div>
+
+
+
+    </div>
+
+</body>
+<script src="js/Registros.js"></script>
+
+</html>
