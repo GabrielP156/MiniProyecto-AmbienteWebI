@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notas - GestaTarea</title>
+  <link rel="stylesheet" href="css/Gestatarea.css" />
+</head>
+
+<body>
+
+  <div class="navbar">
+    <div class="logo">
+      <div class="logo-icon">&#10003;</div>
+      GestaTarea
+    </div>
+    <button class="hamburguesa" id="hamburguesa">&#9776;</button>
+    <div class="nav-links" id="navLinks">
+      <a href="Gestatarea.html">Inicio</a>
+      <a href="MisTareas.html">Mis Tareas</a>
+      <a href="#">Registrar Tarea</a>
+      <a href="notas.html" class="active">Notas</a>
+      <a href="#">Calculadora de Notas</a>
+    </div>
+  </div>
+
+  <div class="notas-page">
+    <div class="notas-grid" id="notasGrid"></div>
+  </div>
+
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box" id="modalBox">
+      <span class="modal-cerrar" id="modalCerrar">&times;</span>
+      <div id="modalContenido"></div>
+    </div>
+  </div>
+
+  <script src="js/notas.js"></script>
+</body>
+
+</html>
