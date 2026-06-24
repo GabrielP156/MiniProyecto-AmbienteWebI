@@ -125,3 +125,9 @@ btnLimpiar.addEventListener("click", () => {
 
 })
 
+const hamburguesa = document.getElementById("hamburguesa")
+const navLinks = document.getElementById("navLinks")
+
+hamburguesa.addEventListener("click", () => {
+  navLinks.classList.toggle("abierto")
+})

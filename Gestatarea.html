@@ -16,11 +16,12 @@
       <div class="logo-icon">&#10003;</div>
       GestaTarea
     </div>
-    <div class="nav-links">
+    <button class="hamburguesa" id="hamburguesa">&#9776;</button>
+    <div class="nav-links" id="navLinks">
       <a href="Gestatarea.html" class="active">Inicio</a>
       <a href="MisTareas.html">Mis Tareas</a>
       <a href="#">Registrar Tarea</a>
-      <a href="#">Notas</a>
+      <a href="Notas.html">Notas</a>
       <a href="#">Calculadora de Notas</a>
     </div>
   </div>
@@ -29,44 +30,12 @@
   <div class="hero">
     <div class="hero-inner">
 
-      <!-- Calendario simple, sin interaccion -->
+      <!-- Calendario -->
       <div class="calendario">
         <div class="cal-header">
-          <span class="cal-mes">Junio 2026</span>
+          <span class="cal-mes" id="calMes"></span>
         </div>
-        <div class="cal-grid">
-          <div class="dia-nombre">D</div>
-          <div class="dia-nombre">L</div>
-          <div class="dia-nombre">M</div>
-          <div class="dia-nombre">X</div>
-          <div class="dia-nombre">J</div>
-          <div class="dia-nombre">V</div>
-          <div class="dia-nombre">S</div>
-
-          <div class="dia vacio"></div>
-          <div class="dia">1</div>
-          <div class="dia tarea">2</div>
-          <div class="dia">3</div>
-          <div class="dia tarea">4</div>
-          <div class="dia">5</div>
-          <div class="dia">6</div>
-
-          <div class="dia">7</div>
-          <div class="dia">8</div>
-          <div class="dia">9</div>
-          <div class="dia hoy">10</div>
-          <div class="dia tarea">11</div>
-          <div class="dia">12</div>
-          <div class="dia">13</div>
-
-          <div class="dia">14</div>
-          <div class="dia tarea">15</div>
-          <div class="dia">16</div>
-          <div class="dia">17</div>
-          <div class="dia">18</div>
-          <div class="dia tarea">19</div>
-          <div class="dia">20</div>
-        </div>
+        <div class="cal-grid" id="calGrid"></div>
       </div>
 
       <!-- Contenido -->
@@ -85,17 +54,19 @@
 
   <!-- ESTADISTICAS -->
   <div class="stats">
-    <div class="stat">
+    <div class="stat" id="cardActivas" style="cursor:pointer">
       <div class="stat-num" id="statActivas">--</div>
       <div class="stat-label">TAREAS ACTIVAS</div>
+      <div class="stat-vermás" style="font-size:11px;opacity:0.6;margin-top:4px">Ver más</div>
     </div>
     <div class="stat">
       <div class="stat-num">87%</div>
       <div class="stat-label">PROMEDIO ACTUAL</div>
     </div>
-    <div class="stat">
+    <div class="stat" id="cardSemana" style="cursor:pointer">
       <div class="stat-num" id="statSemana">--</div>
       <div class="stat-label">ENTREGAS ESTA SEMANA</div>
+      <div class="stat-vermás" style="font-size:11px;opacity:0.6;margin-top:4px">Ver más</div>
     </div>
     <div class="stat">
       <div class="stat-num">12</div>
@@ -103,49 +74,28 @@
     </div>
   </div>
 
+  <!-- MODAL -->
+  <div id="modalOverlay"
+    style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:999;display:none">
+    <div id="modalBox"
+      style="background:#1e1e2e;color:white;max-width:420px;width:90%;margin:8% auto;padding:28px;border-radius:16px;position:relative;box-shadow:0 8px 32px rgba(0,0,0,0.4)">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
+        <h3 id="modalTitulo" style="margin:0;font-size:18px"></h3>
+        <span id="modalCerrar" style="cursor:pointer;font-size:20px;opacity:0.6;line-height:1">&times;</span>
+      </div>
+      <div id="modalContenido"></div>
+    </div>
+  </div>
   <!-- FOOTER -->
   <div class="footer">
     <span class="footer-link">&#9312; utn.ac.cr</span>
-    <p class="footer-desc">GestaTarea &mdash; Dise&ntilde;ada para estudiantes de la <b>UTN</b>.<br>Administra tus
-      compromisos acad&eacute;micos con claridad.</p>
+    <p class="footer-desc" id="btnProblema" style="cursor:pointer">GestaTarea &mdash; Dise&ntilde;ada para estudiantes
+      de la <b>UTN</b>.<br>Administra tus compromisos acad&eacute;micos con claridad. <span
+        style="font-size:11px;opacity:0.6">Ver más</span></p>
     <span class="footer-copy">&copy; 2026 GestaTarea</span>
   </div>
-  <script src="dataJson/data.js"></script>
-  <script>
-  fetch("Json/data.json")
-    .then(res => res.json())
-    .then(data => {
-      localStorage.setItem("data", JSON.stringify(data))
 
-      if (!localStorage.getItem("estadosTareas")) {
-        const estados = {}
-        for (const t of data) {
-          estados[t.id] = t.estado_inicial === "Completada"
-        }
-        localStorage.setItem("estadosTareas", JSON.stringify(estados))
-      }
-
-      if (!localStorage.getItem("tareasUsuario")) {
-        localStorage.setItem("tareasUsuario", JSON.stringify([]))
-      }
-
-      const datos = JSON.parse(localStorage.getItem("data"))
-
-      document.getElementById("statActivas").textContent =
-        datos.filter(t => t.estado_inicial !== "Completada").length
-
-      const hoy = new Date()
-      const fin = new Date()
-      fin.setDate(hoy.getDate() + 7)
-
-      document.getElementById("statSemana").textContent =
-        datos.filter(t => {
-          const p = t.fecha_limite.split("/")
-          const fecha = new Date(p[2], p[1] - 1, p[0])
-          return fecha >= hoy && fecha <= fin
-        }).length
-    })
-</script>
+  <script src="js/index.js"></script>
 </body>
 
 </html>
