@@ -1,0 +1,287 @@
+
+
+/*Calculadora*/
+.form_header{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.text__container-form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form_label-text{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    font-weight: bold;
+    padding: 10px 0;
+}
+
+.form_row{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 20px;
+    gap: 10px;
+}
+
+.form_row input{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+}
+
+.form_row input:focus{
+    border-color: #e67e22;
+}
+
+.form_buttons{
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.form_buttons button{
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.form_buttons button[type="submit"]{
+    background-color: #4f46e5;
+    color: white;
+}
+
+.main__wrapperA{
+    position: relative;
+    left: 150px;
+    top: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+
+}
+.component{
+    font-size: 30px;
+    color: #e67e22;
+}
+
+.form_label-text{
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+    left: 15px;
+}
+
+
+.component__container{
+    position: relative;
+    right: 60px;
+    top: -15px;
+}
+
+.img__delete{
+    width: 20px;
+    position: absolute;
+    top: 9px;
+
+}
+
+.img__delete:hover{
+   transform: translateY(-2px);
+   user-select: none;
+
+
+}
+
+.text__container-form{
+    position: relative;
+}
+
+.img__container_delete{
+    position: relative;
+}
+
+.main__form-container {
+    height: 100%;
+}
+.contenedor{
+    max-height: 100% !important;
+    
+}
+
+
+
+
+/*Ponderado*/
+.resultado-ponderado{
+    width: min(700px, 100%);
+    margin: 19px auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    padding: 35px 25px;
+
+    background: linear-gradient(
+        145deg,
+        #262626,
+        #1b1b1b
+    );
+
+    border-radius: 24px;
+
+    position: relative;
+  
+    overflow: hidden;
+}
+
+.resultado-ponderado::before{
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    background: rgba(244,124,32,.12);
+
+    top: -60px;
+    right: -60px;
+}
+
+.resultado-label{
+    color: #9a9690;
+    font-size: .9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.resultado-nota{
+    font-size: clamp(4rem, 10vw, 7rem);
+    font-weight: 800;
+    line-height: 1;
+
+    color: #f47c20;
+
+    text-shadow:
+        0 0 15px rgba(244,124,32,.25),
+        0 0 40px rgba(244,124,32,.15);
+}
+
+.resultado-texto{
+    color: #b7b3ad;
+    text-align: center;
+    max-width: 320px;
+    line-height: 1.5;
+}
+
+@media (max-width:700px){
+
+    .resultado-ponderado{
+        margin: 25px 15px;
+        padding: 30px 20px;
+    }
+
+    .resultado-texto{
+        font-size: .9rem;
+    }
+}
+
+.flex__wrapper{
+    display: flex;
+}
+
+
+
+/*Caracteristicas Ponderado*/
+
+.ponderado-info{
+    width: min(650px,100%);
+    margin: 25px auto;
+    background: #1a1a1a;
+    border-radius: 22px;
+    overflow: hidden;
+    position: relative;
+    top: 80px;
+    border: 1px solid rgba(255,255,255,.05);
+}
+
+.ponderado-info__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px;
+    background: rgba(244,124,32,.08);
+    border-bottom: 1px solid rgba(244,124,32,.15);
+}
+
+.ponderado-info__header h3{
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.ponderado-info__header span{
+    color: #f47c20;
+    font-weight: 700;
+}
+
+.ponderado-info__body{
+    display: flex;
+    flex-direction: column;
+}
+
+.ponderado-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px 24px;
+
+    transition: .2s ease;
+}
+
+.ponderado-item{
+    border-bottom: 1px solid rgba(255,255,255,.05);
+}
+
+
+
+
+.ponderado-item:hover{
+    background: #fff;
+  
+}
+
+.ponderado-item span{
+    color: #f47c20;
+    font-weight: 500;
+}
+
+
+
+
+
+
+@media screen and (max-width: 700px){
+
+    .form_label-text{
+        display: none;
+    }
+
+    .form_row{
+        grid-template-columns: 1fr;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+    }
+
+}

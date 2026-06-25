@@ -32,7 +32,7 @@ function guardarTareas(tareas) {
 function llenarTabla() {
     let cont=0
     const fragment = document.createDocumentFragment();
-       tbody.innerHTML = ""; // limpiar tabla antes
+       tbody.innerHTML = ""; 
     for (const item of obtenerTareas()) {
         const fila = document.createElement("tr");
         fila.id=cont++

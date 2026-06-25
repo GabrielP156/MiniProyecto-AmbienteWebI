@@ -83,11 +83,11 @@ function abrirModalCrear() {
 
   contenido.innerHTML = `
     <h3 style="margin-bottom:14px">Nueva Nota</h3>
-    <input type="text" id="inputTitulo" placeholder="Título" style="width:100%;padding:8px;margin-bottom:12px;border-radius:8px;border:none;background:#2a2a3e;color:white"/>
+    <input type="text" id="inputTitulo" placeholder="Título" style="width:100%;padding:8px;margin-bottom:12px;border-radius:8px;border:none;background:#1b1b1b;color:white"/>
     <div style="display:flex;gap:8px;margin-bottom:12px" id="paletaColores">
       ${colores.map(c => `<div class="circulo-color" data-color="${c}" style="background:${c};width:22px;height:22px;border-radius:50%;cursor:pointer;border:2px solid transparent"></div>`).join("")}
     </div>
-    <textarea id="inputNota" placeholder="Nota..." style="width:100%;height:100px;padding:8px;border-radius:8px;border:none;background:#2a2a3e;color:white;resize:none"></textarea>
+    <textarea id="inputNota" placeholder="Nota..." style="width:100%;height:100px;padding:8px;border-radius:8px;border:none;background:#1b1b1b;color:white;resize:none"></textarea>
     <button id="btnGuardarNota" style="margin-top:14px;width:100%;padding:10px;background:#f47c20;border:none;border-radius:8px;color:white;cursor:pointer;font-weight:600">Guardar</button>
   `
 
@@ -118,8 +118,8 @@ function abrirModalVer(i) {
   const overlay = document.getElementById("modalOverlay")
   const contenido = document.getElementById("modalContenido")
   contenido.innerHTML = `
-    <input type="text" id="editTitulo" value="${nota.titulo}" style="width:100%;padding:8px;margin-bottom:12px;border-radius:8px;border:none;background:#2a2a3e;color:${nota.color};font-size:16px;font-weight:700"/>
-    <textarea id="editNota" style="width:100%;height:120px;padding:8px;border-radius:8px;border:none;background:#2a2a3e;color:white;resize:none;line-height:1.7">${nota.texto || ""}</textarea>
+    <input type="text" id="editTitulo" value="${nota.titulo}" style="width:100%;padding:8px;margin-bottom:12px;border-radius:8px;border:none;background:#1b1b1b;color:${nota.color};font-size:16px;font-weight:700"/>
+    <textarea id="editNota" style="width:100%;height:120px;padding:8px;border-radius:8px;border:none;background:#1b1b1b;color:white;resize:none;line-height:1.7">${nota.texto || ""}</textarea>
     <button id="btnGuardarEdicion" style="margin-top:14px;width:100%;padding:10px;background:#f47c20;border:none;border-radius:8px;color:white;cursor:pointer;font-weight:600">Guardar cambios</button>
   `
   overlay.style.display = "flex"
