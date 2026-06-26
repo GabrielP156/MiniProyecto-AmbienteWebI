@@ -4,7 +4,7 @@ const calcular = document.querySelector(".form_agregar")
 const container_info = document.querySelector(".ponderado-info__body")
 //aray Json que guardara en el localStorage
 
-const arrayNotas=[
+let arrayNotas=[
   [
   {
     "tipoPrueba": "Parcial I",
@@ -27,15 +27,25 @@ const arrayNotas=[
 ]
 ]
 
+
+
+
 //guardar array en el localStorage
 if(!localStorage.getItem("notasPonderadas")){
 localStorage.setItem("notasPonderadas",JSON.stringify(arrayNotas))
+}
+
+//obtener datos del localstorage
+function obtenerTareas() {
+    return JSON.parse(localStorage.getItem("notasPonderadas")) ?? [];
 }
 
 //guardar en el localstorage
 function guardarTareas(tareas) {
     localStorage.setItem("notasPonderadas", JSON.stringify(tareas));
 }
+let not=obtenerTareas()
+
 
 
 //agregar inputs a la calculadora
@@ -82,6 +92,7 @@ calcular.addEventListener("submit", (e) => {
     } else {
         let cont = 0
         container_info.innerHTML = "";
+        arrayNotas=obtenerTareas()
        
         resultadoPonderado.textContent = totalNota.toFixed(2)
         for (const element of tipoPrueba) {
@@ -105,6 +116,7 @@ calcular.addEventListener("submit", (e) => {
         })
         arrayNotas.push(notasStorage)
         guardarTareas(arrayNotas)
+       
         
 
         total.innerHTML = `<div class="ponderado-item">
@@ -116,7 +128,7 @@ calcular.addEventListener("submit", (e) => {
 
     }
 
-
+        
 
 })
 
