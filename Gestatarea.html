@@ -22,7 +22,11 @@
       <a href="MisTareas.html">Mis Tareas</a>
       <a href="Registrar.html">Registrar Tarea</a>
       <a href="Notas.html">Notas</a>
+<<<<<<< HEAD
+      <a href="Calculadora.html">Calculadora de Notas</a>
+=======
       <a href="">Calculadora de Notas</a>
+>>>>>>> origin/develop
     </div>
   </div>
 
@@ -44,7 +48,7 @@
         <p class="subtitulo">Registra tus tareas, calcula tus notas y lleva el control de tu semestre universitario,
           todo en un solo lugar.</p>
         <div class="botones">
-          <a href="#" class="btn-naranja">+ Registrar Tarea</a>
+          <a href="Registrar.html" class="btn-naranja">+ Registrar Tarea</a>
           <a href="MisTareas.html" class="btn-gris">Ver mis tareas &rarr;</a>
         </div>
       </div>
@@ -60,8 +64,8 @@
       <div class="stat-vermás" style="font-size:11px;opacity:0.6;margin-top:4px">Ver más</div>
     </div>
     <div class="stat">
-      <div class="stat-num">87%</div>
-      <div class="stat-label">PROMEDIO ACTUAL</div>
+      <div class="stat-num promedio"></div>
+      <div class="stat-label">Ultimo Promedio Calculado</div>
     </div>
     <div class="stat" id="cardSemana" style="cursor:pointer">
       <div class="stat-num" id="statSemana">--</div>
@@ -69,7 +73,7 @@
       <div class="stat-vermás" style="font-size:11px;opacity:0.6;margin-top:4px">Ver más</div>
     </div>
     <div class="stat">
-      <div class="stat-num">12</div>
+      <div class="stat-num notas1"></div>
       <div class="stat-label">NOTAS REGISTRADAS</div>
     </div>
   </div>
@@ -96,6 +100,18 @@
   </div>
 
   <script src="js/index.js"></script>
+  <script>
+   function obtenerTareas() {
+    return JSON.parse(localStorage.getItem("notasPonderadas")) ?? [];
+}
+
+    const notas = obtenerTareas();
+    let numeroCalculadora=document.querySelector(".notas1")
+    let promedio=document.querySelector(".promedio")
+   console.log(notas)
+    promedio.textContent =notas.at(-1).at(-1).total+" %";
+     numeroCalculadora.textContent=notas[0].length
+  </script>
 </body>
 
 </html>

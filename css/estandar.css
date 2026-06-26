@@ -426,11 +426,13 @@ select {
   flex-wrap: wrap;
 }
 
+
+
 /* ---- NOTAS PAGE ---- */
 .notas-page {
   min-height: calc(100vh - 60px);
   padding: 40px;
-  background: #12121e;
+
 }
 
 .notas-grid {
@@ -449,7 +451,7 @@ select {
 }
 
 .nota-card {
-  background: #1e1e2e;
+  background: #1b1b1b;
   border: 2px solid transparent;
   border-radius: 12px;
   padding: 20px 16px;
@@ -509,7 +511,7 @@ select {
   position: absolute;
   top: 28px;
   right: 8px;
-  background: #2a2a3e;
+  background: #1b1b1b;
   border-radius: 8px;
   overflow: hidden;
   z-index: 10;
@@ -534,7 +536,7 @@ select {
 }
 
 .btn-nueva-nota {
-  background:#d3bc3a;
+  background:#e67e22;
   color: white;
   border: none;
   border-radius: 10px;
@@ -548,7 +550,8 @@ select {
 }
 
 .btn-nueva-nota:hover { 
-  background: #e39013; 
+  background: #fff; 
+  color:#e67e22 ;
 }
 
 /* ---- MODAL ---- */
@@ -559,7 +562,7 @@ select {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.7);
+  background: #1b1b1b;
   z-index: 999;
   justify-content: center;
   align-items: center;
@@ -570,7 +573,7 @@ select {
 }
 
 .modal-box {
-  background: #1e1e2e;
+  background: #2b2b2b;
   color: white;
   width: 90%;
   max-width: 400px;
@@ -675,4 +678,8 @@ select {
   .notas-grid {
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   }
+}
+
+.btn-nueva-nota{
+
 }

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estandar.css">
+    <link rel="stylesheet" href="css/Calculadora.css">
+    <link rel="stylesheet" href="css/Registro.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <header>
+        <!-- NAVBAR -->
+        <div class="navbar">
+            <div class="logo">
+                <div class="logo-icon">&#10003;</div>
+                GestaTarea
+            </div>
+            <button class="hamburguesa" id="hamburguesa">&#9776;</button>
+            <div class="nav-links" id="navLinks">
+                <a href="Gestatarea.html">Inicio</a>
+                <a href="MisTareas.html">Mis Tareas</a>
+                <a href="Registrar.html">Registrar Tarea</a>
+                <a href="Notas.html">Notas</a>
+                <a href="Calculadora.html" class="active">Calculadora de Notas</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="flex__wrapper">
+            <div class="main__wrapperA">
+                <div class="main__form-container contenedor">
+                    <form action="" class="form_agregar">
+                        <div class="text__container-form">
+
+                            <div class="form_label-text">
+                                <div class="component__container">
+                                    <label class="component">Componente</label>
+                                </div>
+                                <label>Nota</label>
+                                <label>Porcentaje Total</label>
+                            </div>
+
+                            <div class="form_row">
+                                <input type="text" class="tipoPrueba" value="Parcial I">
+                                <input type="number" value="80" class="obtenido" min="0" placeholder="0%" required>
+                                <input type="number" value="30" min="0" class="dado" placeholder="0" required>
+                            </div>
+
+                            <div class="form_row">
+                                <input type="text" class="tipoPrueba" value="Parcial II">
+                                <input type="number" value="70" class="obtenido" min="0" placeholder="0%" required>
+                                <input type="number" value="30" min="0" class="dado" placeholder="0" required>
+                            </div>
+
+                            <div class="form_row">
+                                <input type="text" class="tipoPrueba" value="Proyecto">
+                                <input type="number" class="obtenido" value="90" min="0" placeholder="0%" required>
+                                <input type="number" min="0" value="40"  class="dado" placeholder="0" required>
+                            </div>
+
+                            <div class="form_row">
+                                <input type="text" class="tipoPrueba" value="Prueba corta I">
+                                <input type="number" class="obtenido" min="0" placeholder="0%" required>
+                                <input type="number" min="0" class="dado" placeholder="0">
+                                <div class="img__container_delete ">
+                                    <img src="img/image.png" alt=" imagen eliminar  " class="img__delete" required>
+                                </div>
+                            </div>
+
+                            <div class="form_row">
+                                <input type="text" class="tipoPrueba" value="Prueba corta II">
+                                <input type="number" class="obtenido" min="0" placeholder="0%" required>
+                                <input type="number" min="0" class="dado" placeholder="0">
+                                <div class="img__container_delete ">
+                                    <img src="img/image.png" alt=" imagen eliminar " class="img__delete" required>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="form_buttons">
+                            <button type="button" class="searchBtn Agregar">Agregar Componente</button>
+                            <button type="submit " class="searchBtn calcular ">Calcular</button>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="resultado-ponderado">
+                    <span class="resultado-label">Resultado final</span>
+
+                    <div class="resultado-nota">
+                        
+                    </div>
+
+                    <p class="resultado-texto">
+                        Nota ponderada obtenida según los componentes registrados.
+                    </p>
+                </div>
+            </div>
+
+
+
+            <div class="ponderado-info">
+
+                <div class="ponderado-info__header">
+                    <h3>Desglose del cálculo</h3>
+                    <span>Total: 100%</span>
+                </div>
+
+                <div class="ponderado-info__body">
+                </div>
+
+            </div>
+
+
+
+    </main>
+
+
+
+
+</body>
+<script src="js/calculadora.js"></script>
+
+</html>
