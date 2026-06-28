@@ -38,10 +38,15 @@ function construirCalendario() {
 }
 
 construirCalendario()
+
+
 fetch("Json/data.json")
     .then(res => res.json())
     .then(data => {
-        localStorage.setItem("data", JSON.stringify(data))
+        if(!localStorage.getItem("data")){
+             localStorage.setItem("data", JSON.stringify(data))
+        }
+       
 
         if (!localStorage.getItem("estadosTareas")) {
             const estados = {}
