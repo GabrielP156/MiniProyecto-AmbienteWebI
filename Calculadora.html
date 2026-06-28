@@ -34,7 +34,8 @@
         <div class="flex__wrapper">
             <div class="main__wrapperA">
                 <div class="main__form-container contenedor">
-                    <form action="" class="form_agregar">
+                    <div class="center__container">
+                         <form action="" class="form_agregar">
                         <div class="text__container-form">
 
                             <div class="form_label-text">
@@ -47,35 +48,45 @@
 
                             <div class="form_row">
                                 <input type="text" class="tipoPrueba" value="Parcial I">
-                                <input type="number" value="80" class="obtenido" min="0" placeholder="0%" required>
-                                <input type="number" value="30" min="0" class="dado" placeholder="0" required>
+                                  <label class="texto__oculto">Nota</label>
+                                <input type="number"  class="obtenido" min="0" placeholder="0%" required>
+                                  <label class="texto__oculto">Porcentaje Total</label>
+                                <input type="number"  min="0" class="dado" placeholder="0" required>
                             </div>
 
                             <div class="form_row">
                                 <input type="text" class="tipoPrueba" value="Parcial II">
-                                <input type="number" value="70" class="obtenido" min="0" placeholder="0%" required>
-                                <input type="number" value="30" min="0" class="dado" placeholder="0" required>
+                                  <label class="texto__oculto">Nota</label>
+                                <input type="number"  class="obtenido" min="0" placeholder="0%" required>
+                                  <label class="texto__oculto">Porcentaje Total</label>
+                                <input type="number"  min="0" class="dado" placeholder="0" required>
                             </div>
 
-                            <div class="form_row">
+                             <div class="form_row">
                                 <input type="text" class="tipoPrueba" value="Proyecto">
-                                <input type="number" class="obtenido" value="90" min="0" placeholder="0%" required>
-                                <input type="number" min="0" value="40"  class="dado" placeholder="0" required>
+                                  <label class="texto__oculto">Nota</label>
+                                <input type="number" class="obtenido" min="0" placeholder="0%" required>
+                                  <label class="texto__oculto">Porcentaje Total</label>
+                                <input type="number"  min="0" class="dado" placeholder="0" required>
                             </div>
 
                             <div class="form_row">
-                                <input type="text" class="tipoPrueba" value="Prueba corta I">
-                                <input type="number" class="obtenido" min="0" placeholder="0%" required>
-                                <input type="number" min="0" class="dado" placeholder="0">
+                             <input type="text" class="tipoPrueba" value="Parcial I">
+                                  <label class="texto__oculto">Nota</label>
+                                <input type="number"  class="obtenido" min="0" placeholder="0%" required>
+                                  <label class="texto__oculto">Porcentaje Total</label>
+                                <input type="number"  min="0" class="dado" placeholder="0" required>
                                 <div class="img__container_delete ">
                                     <img src="img/image.png" alt=" imagen eliminar  " class="img__delete" required>
                                 </div>
                             </div>
 
                             <div class="form_row">
-                                <input type="text" class="tipoPrueba" value="Prueba corta II">
-                                <input type="number" class="obtenido" min="0" placeholder="0%" required>
-                                <input type="number" min="0" class="dado" placeholder="0">
+                              <input type="text" class="tipoPrueba" value="Parcial I">
+                                  <label class="texto__oculto">Nota</label>
+                                <input type="number"  class="obtenido" min="0" placeholder="0%" required>
+                                  <label class="texto__oculto">Porcentaje Total</label>
+                                <input type="number"  min="0" class="dado" placeholder="0" required>
                                 <div class="img__container_delete ">
                                     <img src="img/image.png" alt=" imagen eliminar " class="img__delete" required>
                                 </div>
@@ -89,37 +100,47 @@
                         </div>
 
                     </form>
-                </div>
-                <div class="resultado-ponderado">
-                    <span class="resultado-label">Resultado final</span>
 
-                    <div class="resultado-nota">
-                        
+                    </div>
+                   
+                </div>
+                <div class="ponderado-info">
+
+                    <div class="ponderado-info__header">
+                        <h3>Desglose del cálculo</h3>
+                        <span>Total: 100%</span>
                     </div>
 
-                    <p class="resultado-texto">
-                        Nota ponderada obtenida según los componentes registrados.
-                    </p>
-                </div>
-            </div>
+                    <div class="ponderado-info__body">
+                    </div>
 
-
-
-            <div class="ponderado-info">
-
-                <div class="ponderado-info__header">
-                    <h3>Desglose del cálculo</h3>
-                    <span>Total: 100%</span>
-                </div>
-
-                <div class="ponderado-info__body">
                 </div>
 
             </div>
+
+
+
+
 
 
 
     </main>
+    <aside>
+        <div class="nota__container">
+            <div class="resultado-ponderado">
+            <span class="resultado-label">Resultado final</span>
+
+            <div class="resultado-nota">
+
+            </div>
+
+            <p class="resultado-texto">
+                Nota ponderada obtenida según los componentes registrados.
+            </p>
+        </div>
+        </div>
+        
+    </aside>
 
 
 

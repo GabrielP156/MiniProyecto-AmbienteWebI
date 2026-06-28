@@ -53,12 +53,14 @@ Agregar.addEventListener("click", () => {
     const element = document.createElement("div");
     element.classList.add("form_row");
     element.innerHTML = `
-        <input type="text"  class="tipoPrueba">
-        <input type="number" class="obtenido"  min="0" placeholder="0%" required>
-        <input type="number" min="0" class="dado"  placeholder="0" required>
-         <div class="img__container_delete ">
-            <img src="img/image.png" alt="imagen eliminar " class="img__delete">
-        </div>
+        <input type="text" class="tipoPrueba">
+                                  <label class="texto__oculto">Nota</label>
+                                <input type="number"  class="obtenido" min="0" placeholder="0%" required>
+                                  <label class="texto__oculto">Porcentaje Total</label>
+                                <input type="number"  min="0" class="dado" placeholder="0" required>
+                                <div class="img__container_delete ">
+                                    <img src="img/image.png" alt=" imagen eliminar " class="img__delete" required>
+                                </div>
     `;
     formContainer.appendChild(element);
     element.querySelector("input").focus();
