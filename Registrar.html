@@ -10,19 +10,22 @@
 </head>
 
 <body>
-    <div class="navbar">
-        <div class="logo">
-            <div class="logo-icon">&#10003;</div>
-            GestaTarea
+  <header>
+        <div class="navbar">
+            <div class="logo">
+                <div class="logo-icon">&#10003;</div>
+                GestaTarea
+            </div>
+            <button class="hamburguesa" id="hamburguesa">&#9776;</button>
+            <div class="nav-links" id="navLinks">
+                <a href="Gestatarea.html">Inicio</a>
+                <a href="MisTareas.html" class="active">Mis Tareas</a>
+                <a href="Registrar.html">Registrar Tarea</a>
+                <a href="Notas.html">Notas</a>
+                <a href="Calculadora.html">Calculadora de Notas</a>
+            </div>
         </div>
-        <div class="nav-links">
-            <a href="Gestatarea.html" >Inicio</a>
-            <a href="MisTareas.html">Mis Tareas</a>
-            <a href="Registrar.html" class="active">Registrar Tarea</a>
-            <a href="Notas.html">Notas</a>
-            <a href="Calculadora.html" >Calculadora de Notas</a>
-        </div>
-    </div>
+    </header>
     <main>
         <div class="master__text">
             <div class="text__container">
@@ -86,22 +89,25 @@
                 </form>
 
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Materia</th>
-                        <th>Prioridad</th>
-                        <th>Entrega</th>
-                        <th>Estado</th>
-                        <th>Porcentaje</th>
-                    </tr>
-                </thead>
+            <div class="table__container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Materia</th>
+                            <th>Prioridad</th>
+                            <th>Entrega</th>
+                            <th>Estado</th>
+                            <th>Porcentaje</th>
+                        </tr>
+                    </thead>
 
-                <tbody id="tabla-tareas">
+                    <tbody id="tabla-tareas">
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
+
     </main>
 
     <aside>
@@ -172,4 +178,5 @@
 </body>
 <script src="js/Registros.js"></script>
 
-</html>  
+
+</html>
