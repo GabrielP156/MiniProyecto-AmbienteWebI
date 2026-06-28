@@ -14,7 +14,7 @@
   <div class="navbar">
     <div class="logo">
       <div class="logo-icon">&#10003;</div>
-      GestaTarea
+      GestaTarea  
     </div>
     <button class="hamburguesa" id="hamburguesa">&#9776;</button>
     <div class="nav-links" id="navLinks">
@@ -22,11 +22,7 @@
       <a href="MisTareas.html">Mis Tareas</a>
       <a href="Registrar.html">Registrar Tarea</a>
       <a href="Notas.html">Notas</a>
-<<<<<<< HEAD
       <a href="Calculadora.html">Calculadora de Notas</a>
-=======
-      <a href="">Calculadora de Notas</a>
->>>>>>> origin/develop
     </div>
   </div>
 
@@ -99,19 +95,21 @@
     <span class="footer-copy">&copy; 2026 GestaTarea</span>
   </div>
 
-  <script src="js/index.js"></script>
+
+</body>
+<script src="js/index.js"></script>
   <script>
    function obtenerTareas() {
     return JSON.parse(localStorage.getItem("notasPonderadas")) ?? [];
 }
-
     const notas = obtenerTareas();
     let numeroCalculadora=document.querySelector(".notas1")
     let promedio=document.querySelector(".promedio")
-   console.log(notas)
+    let cont=0
     promedio.textContent =notas.at(-1).at(-1).total+" %";
-     numeroCalculadora.textContent=notas[0].length
+    numeroCalculadora.textContent=notas.length
+   
+
   </script>
-</body>
 
 </html>

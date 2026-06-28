@@ -4,6 +4,7 @@
       display: flex;
       justify-content: center;
       padding: 50px 20px;
+      gap: 100px;
 
   }
 
@@ -13,6 +14,7 @@
       border-radius: 20px;
       width: 100%;
       max-width: 700px;
+      min-width: 400px;
       padding: 35px;
       box-shadow: 0 10px 30px rgba(0,0,0,.35);
       max-height: 650px;
@@ -98,7 +100,7 @@
 }
 
 .info-tabla{
-    max-width: 400px;
+    align-self: flex-end;
     white-space: normal;
     font-family: sans-serif;
     font-size: 17px;
@@ -109,24 +111,10 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 40px;
+    color: #f47c20;
    
 }
 
-  @media screen and (max-width:700px){
-
-      .text-container-form,
-      .section__container,
-      .fecha-puntaje{
-          flex-direction: column;
-      }
-
-      .section__container select{
-          width: 100%;
-      }
-      .main__form-container{
-        max-height: 1000px;
-      }
-  }
 
 
 /*----------TABLA--------*/
@@ -209,6 +197,7 @@ margin-left: 40px;
 }
 
 
+
 /*----------FORM DE ACCIONES--------*/
 .form__action{
     display: none;
@@ -282,14 +271,130 @@ margin-left: 40px;
     display:none;
 }
 
-  @media screen and (max-width:700px){
-    .main__wrapperA{
-        flex-direction: column;
-    }
-    table{
-        margin-top: 100px;
+
+
+/*Reponsive */
+
+
+/*Formulario*/
+  @media screen and (max-width:1300px){
+        .text-container-form,
+      .section__container,
+      .fecha-puntaje{
+          flex-direction: column;
+      }
+      .section__container select{
           width: 100%;
+      }
+      .main__form-container{
+        max-height: 100%;
+        margin: auto;
+       
+      }
+      .main__wrapperA{
+        flex-direction: column;
+        display: flex;
+      }
+      .main__form-container{
+        margin-bottom: 0px;
+      }
+
+  .table__container{
+    max-width: 100%;
     overflow-x: auto;
+    overflow-y: hidden;
+    margin-top: 0px;
+  }
+      table{
+        width: 100%;
+        border-radius: 20px ;
     }
+  .master__text{
+   display: grid;
+   justify-content: center;
+
+  }
+  p{
+    color: #f47c20;
+    margin-top: 10px;
+  }
+
+  .h1__Solution{
+    text-align: center;
+  }
+  .form_agregar{
+
+    min-width: 90%;
+    margin: auto;
+}
+.form2{
+    min-width: 400px;
+    margin-top: 300px;
+}
     
 }
+
+/*Tabla y texto*/
+  @media screen and (min-width:1001px) and (max-width:1350px){
+.table__container{
+    min-width: 500px;
+    overflow-x: scroll;
+  
+}
+.master__text{
+    flex-direction: row;
+}
+.info-tabla{
+    align-self: flex-end;
+    color: #f47c20;
+}
+
+.master__text{
+    color:#f47c20;
+}
+.h1__Solution{
+position: relative;
+left: 50px;
+}
+.form2{
+    min-width: 400px;
+    min-height: 900px;
+  
+}
+
+.form_agregar{
+
+    min-width: 90%;
+    margin: auto;
+}
+
+
+  }
+ @media screen and (max-width:1000px){
+ .form2{
+    min-height: 900px;
+ }
+}
+
+
+ 
+
+ @media screen and (max-width:450px){
+    .info-tabla{
+   max-width: 90%;
+   position: relative;
+   left: 30px;
+   max-height: 150px;
+   
+}
+.main__form-container{
+     max-width: 90%;
+     min-width: 90%;
+}
+.form2{
+
+        min-height: 900px;
+      
+}
+
+ }
