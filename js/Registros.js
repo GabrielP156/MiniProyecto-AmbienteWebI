@@ -129,4 +129,9 @@ form2.addEventListener("submit",(e)=>{
     llenarTabla()
     
 })
+const hamburguesa = document.getElementById("hamburguesa")
+const navLinks = document.getElementById("navLinks")
 
+hamburguesa.addEventListener("click", () => {
+    navLinks.classList.toggle("abierto")
+})

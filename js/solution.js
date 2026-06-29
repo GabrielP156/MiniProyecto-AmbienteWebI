@@ -7,8 +7,12 @@ const btnBuscar = document.querySelector(".searchBtn")
 const inputBuscar = document.querySelector(".search__main")
 const btnLimpiar = document.querySelector(".limpiar")
 
+
+
 let tareas = []
 
+
+//Crear el localstorage o leerlo 
 fetch("Json/data.json")
   .then(res => res.json())
   .then(data => {
@@ -115,7 +119,7 @@ btnBuscar.addEventListener("click", () => {
 
 
 
-
+///limpiar los valores 
 btnLimpiar.addEventListener("click", () => {
   inputBuscar.value = ""
   autocomplete(tareas)

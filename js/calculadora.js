@@ -55,9 +55,15 @@ Agregar.addEventListener("click", () => {
     element.innerHTML = `
         <input type="text" class="tipoPrueba">
                                   <label class="texto__oculto">Nota</label>
+<<<<<<< HEAD
                                 <input type="number"  class="obtenido" min="0" placeholder="0%" required>
                                   <label class="texto__oculto">Porcentaje Total</label>
                                 <input type="number"  min="0" class="dado" placeholder="0" required>
+=======
+                                <input type="number"  class="obtenido" min="0" placeholder="0" required>
+                                  <label class="texto__oculto">Porcentaje Total</label>
+                                <input type="number"  min="0" class="dado" placeholder="0%" required>
+>>>>>>> f6f74270ea26174fe23b301f7b9830964f18b19b
                                 <div class="img__container_delete ">
                                     <img src="img/image.png" alt=" imagen eliminar " class="img__delete" required>
                                 </div>
@@ -186,3 +192,10 @@ formContainer.addEventListener("click", (e) => {
 function eliminar(object) {
     formContainer.removeChild(object)
 }
+
+const hamburguesa = document.getElementById("hamburguesa")
+const navLinks = document.getElementById("navLinks")
+
+hamburguesa.addEventListener("click", () => {
+    navLinks.classList.toggle("abierto")
+})
