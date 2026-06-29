@@ -1,5 +1,7 @@
 const diasNombre = ["D", "L", "M", "X", "J", "V", "S"]
 
+
+//crear el calendario
 function construirCalendario() {
     const hoy = new Date()
     const anio = hoy.getFullYear()
@@ -39,28 +41,17 @@ function construirCalendario() {
 
 construirCalendario()
 
-
+//funcion que crea el localstorage
 fetch("Json/data.json")
     .then(res => res.json())
     .then(data => {
         if(!localStorage.getItem("data")){
              localStorage.setItem("data", JSON.stringify(data))
         }
-       
 
-        if (!localStorage.getItem("estadosTareas")) {
-            const estados = {}
-            for (const t of data) {
-                estados[t.id] = t.estado_inicial === "Completada"
-            }
-            localStorage.setItem("estadosTareas", JSON.stringify(estados))
-        }
 
-        if (!localStorage.getItem("tareasUsuario")) {
-            localStorage.setItem("tareasUsuario", JSON.stringify([]))
-        }
-
-        const datos = JSON.parse(localStorage.getItem("data"))
+       //LLENAR LOS CAMPOS DE INDEX
+        let datos = JSON.parse(localStorage.getItem("data"))
 
         let activas = datos.filter(t => t.estado_inicial !== "Completada")
         document.getElementById("statActivas").textContent = activas.length
@@ -70,12 +61,15 @@ fetch("Json/data.json")
         fin.setDate(hoy.getDate() + 7)
 
         let semana = datos.filter(t => {
-            const p = t.fecha_limite.split("/")
-            const fecha = new Date(p[2], p[1] - 1, p[0])
+            const fecha = new Date(t.fecha_limite)
             return fecha >= hoy && fecha <= fin
         })
         document.getElementById("statSemana").textContent = semana.length
 
+
+
+
+        //Crear Modal con tareas
         const overlay = document.getElementById("modalOverlay")
         const modalTitulo = document.getElementById("modalTitulo")
         const modalContenido = document.getElementById("modalContenido")
@@ -153,6 +147,8 @@ fetch("Json/data.json")
             overlay.style.display = "block"
         })
     })
+
+    //navbar responsive hamburguesa
 
 const hamburguesa = document.getElementById("hamburguesa")
 const navLinks = document.getElementById("navLinks")
