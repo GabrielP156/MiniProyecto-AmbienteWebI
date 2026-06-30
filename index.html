@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GestaTarea</title>
-  <link rel="stylesheet" href="css/estandar.css"/>
+  <link rel="stylesheet" href="css/estandar.css" />
 </head>
 
 <body>
@@ -14,7 +14,7 @@
   <div class="navbar">
     <div class="logo">
       <div class="logo-icon">&#10003;</div>
-      GestaTarea  
+      GestaTarea
     </div>
     <button class="hamburguesa" id="hamburguesa">&#9776;</button>
     <div class="nav-links" id="navLinks">
@@ -23,6 +23,40 @@
       <a href="Registrar.html">Registrar Tarea</a>
       <a href="Notas.html">Notas</a>
       <a href="Calculadora.html">Calculadora de Notas</a>
+      <div class="header-session-area">
+        <details class="session-dropdown">
+          <summary id="headerUsuario" class="header-user">
+            <span class="user-offline"></span>
+            Usuario no logueado
+          </summary>
+
+          <div class="session-dropdown-content">
+            <h3>Sesión de usuario</h3>
+            <p>Simulación con sessionStorage.</p>
+
+            <form id="formLoginSimulado" class="session-form">
+              <div class="form-group">
+                <label for="loginNombre">Nombre</label>
+                <input type="text" id="loginNombre" placeholder="Ana Rodríguez">
+              </div>
+
+              <div class="form-group">
+                <label for="loginCorreo">Correo</label>
+                <input type="email" id="loginCorreo" placeholder="ana@correo.com">
+              </div>
+
+              <div class="session-buttons">
+                <button type="submit" class="btn-primary">Ingresar</button>
+                <button type="button" id="btnCerrarSesion" class="btn-secondary">Salir</button>
+              </div>
+            </form>
+
+            <div id="usuarioActual" class="user-card">
+              No hay usuario logueado.
+            </div>
+          </div>
+        </details>
+      </div>
     </div>
   </div>
 
@@ -98,18 +132,18 @@
 
 </body>
 <script src="js/index.js"></script>
-  <script>
-   function obtenerTareas() {
+<script>
+  function obtenerTareas() {
     return JSON.parse(localStorage.getItem("notasPonderadas")) ?? [];
-}
-    const notas = obtenerTareas();
-    let numeroCalculadora=document.querySelector(".notas1")
-    let promedio=document.querySelector(".promedio")
-    let cont=0
-    promedio.textContent =notas.at(-1).at(-1).total+" %";
-    numeroCalculadora.textContent=notas.length
-   
+  }
+  const notas = obtenerTareas();
+  let numeroCalculadora = document.querySelector(".notas1")
+  let promedio = document.querySelector(".promedio")
+  let cont = 0
+  promedio.textContent = notas.at(-1).at(-1).total + " %";
+  numeroCalculadora.textContent = notas.length
 
-  </script>
+
+</script>
 
 </html>

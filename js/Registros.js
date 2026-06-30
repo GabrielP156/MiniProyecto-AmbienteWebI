@@ -1,11 +1,11 @@
 const tbody = document.getElementById("tabla-tareas");
-const form=document.querySelector(".form_agregar")
-const iconCerrar=document.querySelector(".icon_Cerrar")
-const miniform=document.querySelector(".form__action")
-const btnAcutalizar=document.querySelector(".Aceptar")
-const btnEliminar=document.querySelector(".Eliminar")
-const form2=document.querySelector(".form2")
-const cancelar=document.querySelector(".cancelar")
+const form = document.querySelector(".form_agregar")
+const iconCerrar = document.querySelector(".icon_Cerrar")
+const miniform = document.querySelector(".form__action")
+const btnAcutalizar = document.querySelector(".Aceptar")
+const btnEliminar = document.querySelector(".Eliminar")
+const form2 = document.querySelector(".form2")
+const cancelar = document.querySelector(".cancelar")
 
 
 //form variables
@@ -30,20 +30,20 @@ function guardarTareas(tareas) {
 
 //funcion que llena la tabla
 function llenarTabla() {
-    let cont=0
+    let cont = 0
     const fragment = document.createDocumentFragment();
-       tbody.innerHTML = ""; 
+    tbody.innerHTML = "";
     for (const item of obtenerTareas()) {
-        let color=""
+        let color = ""
         const fila = document.createElement("tr");
-        fila.id=cont++
+        fila.id = cont++
 
-        if(item.prioridad==="Alta"){
-           color = "#ff0000";
-        }else if(item.prioridad==="Media"){
-            color="#d2ae1d";
-        }else{
-            color="#18ce0b";
+        if (item.prioridad === "Alta") {
+            color = "#ff0000";
+        } else if (item.prioridad === "Media") {
+            color = "#d2ae1d";
+        } else {
+            color = "#18ce0b";
         }
         fila.innerHTML = `
             <td>${item.nombre_tarea}</td>
@@ -53,7 +53,7 @@ function llenarTabla() {
             <td>${item.materia}</td>
             <td>${item.puntaje_porcentaje}</td>
         `;
-        
+
         fragment.appendChild(fila);
     }
     tbody.appendChild(fragment);
@@ -62,10 +62,10 @@ function llenarTabla() {
 
 llenarTabla()
 //funcion que agrega Registros
-form.addEventListener("submit",(e)=>{
+form.addEventListener("submit", (e) => {
     e.preventDefault();
-    let tareas=obtenerTareas()
-    const registro={
+    let tareas = obtenerTareas()
+    const registro = {
         nombre_tarea: document.getElementById("nombre_tarea").value,
         materia: document.getElementById("materia").value,
         prioridad: document.getElementById("prioridad").value,
@@ -82,31 +82,31 @@ form.addEventListener("submit",(e)=>{
 })
 
 //mostrar miniFormulario
-iconCerrar.addEventListener("click",()=>{
-miniform.style.display="none"
+iconCerrar.addEventListener("click", () => {
+    miniform.style.display = "none"
 })
 
 //funcion que obtiene el Elemento o modifica
-tbody.addEventListener("dblclick",(e)=>{
-    fila=e.target.closest("tr")
-    miniform.style.display="flex"
+tbody.addEventListener("dblclick", (e) => {
+    fila = e.target.closest("tr")
+    miniform.style.display = "flex"
 })
 
 //eliminar Registros
-btnEliminar.addEventListener("click",()=>{
-    let tareas=obtenerTareas()
-    tareas.splice(fila.id,1)
+btnEliminar.addEventListener("click", () => {
+    let tareas = obtenerTareas()
+    tareas.splice(fila.id, 1)
     guardarTareas(tareas)
-     miniform.style.display="none"
+    miniform.style.display = "none"
     llenarTabla()
 })
 
 //Abrir Formulario Actualizar
-btnAcutalizar.addEventListener("click",()=>{
-    let tareas=obtenerTareas()
-    let objeto=tareas[fila.id]
-    miniform.style.display="none"
-    form2.style.display="flex"
+btnAcutalizar.addEventListener("click", () => {
+    let tareas = obtenerTareas()
+    let objeto = tareas[fila.id]
+    miniform.style.display = "none"
+    form2.style.display = "flex"
     inputNombre.value = objeto.nombre_tarea;
     inputMateria.value = objeto.materia;
     inputPrioridad.value = objeto.prioridad;
@@ -117,15 +117,15 @@ btnAcutalizar.addEventListener("click",()=>{
 })
 
 //cerrar Formulario Actualizar
-cancelar.addEventListener("click",()=>{
-form2.style.display="none"
+cancelar.addEventListener("click", () => {
+    form2.style.display = "none"
 })
 
 //ejecutar Formulario
-form2.addEventListener("submit",(e)=>{
+form2.addEventListener("submit", (e) => {
     e.preventDefault();
-    let tareas=obtenerTareas()
-    let objeto=tareas[fila.id]
+    let tareas = obtenerTareas()
+    let objeto = tareas[fila.id]
     objeto.nombre_tarea = inputNombre.value;
     objeto.materia = inputMateria.value;
     objeto.prioridad = inputPrioridad.value;
@@ -135,9 +135,9 @@ form2.addEventListener("submit",(e)=>{
     objeto.puntaje_porcentaje = inputPuntaje.value;
 
     guardarTareas(tareas)
-    form2.style.display="none"
+    form2.style.display = "none"
     llenarTabla()
-    
+
 })
 const hamburguesa = document.getElementById("hamburguesa")
 const navLinks = document.getElementById("navLinks")

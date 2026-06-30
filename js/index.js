@@ -47,27 +47,27 @@ construirCalendario()
 fetch("Json/data.json")
     .then(res => res.json())
     .then(data => {
-        if(!localStorage.getItem("data")){
-             localStorage.setItem("data", JSON.stringify(data))
+        if (!localStorage.getItem("data")) {
+            localStorage.setItem("data", JSON.stringify(data))
         }
 
 
-       //LLENAR LOS CAMPOS DE INDEX
+        //LLENAR LOS CAMPOS DE INDEX
         let datos = JSON.parse(localStorage.getItem("data"))
 
         let activas = datos.filter(t => t.estado_inicial !== "Completada")
         document.getElementById("statActivas").textContent = activas.length
 
-      const hoy = new Date()
-        hoy.setHours(0,0,0,0)
+        const hoy = new Date()
+        hoy.setHours(0, 0, 0, 0)
 
         const fin = new Date()
-        fin.setHours(0,0,0,0)
+        fin.setHours(0, 0, 0, 0)
         fin.setDate(fin.getDate() + 7)
 
         let semana = datos.filter(t => {
             const fecha = new Date(t.fecha_limite)
-            fecha.setHours(0,0,0,0)
+            fecha.setHours(0, 0, 0, 0)
 
             return fecha >= hoy && fecha <= fin
         })
@@ -155,7 +155,7 @@ fetch("Json/data.json")
         })
     })
 
-    //navbar responsive hamburguesa
+//navbar responsive hamburguesa
 
 const hamburguesa = document.getElementById("hamburguesa")
 const navLinks = document.getElementById("navLinks")

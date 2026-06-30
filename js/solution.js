@@ -30,13 +30,13 @@ let autocomplete = (tareas2) => {
   let color
 
   for (const tarea of tareas2) {
-   if(tarea.estado_inicial === "Pendiente"){
-    color=colores[2]
-    }else{
-      if(tarea.estado_inicial === "En progreso"){
-        color=colores[0]
-      }else{
-        color=colores[1]
+    if (tarea.estado_inicial === "Pendiente") {
+      color = colores[2]
+    } else {
+      if (tarea.estado_inicial === "En progreso") {
+        color = colores[0]
+      } else {
+        color = colores[1]
       }
     }
     html += `

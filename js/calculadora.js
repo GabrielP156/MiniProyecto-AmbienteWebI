@@ -4,35 +4,35 @@ const calcular = document.querySelector(".form_agregar")
 const container_info = document.querySelector(".ponderado-info__body")
 //aray Json que guardara en el localStorage
 
-let arrayNotas=[
-  [
-  {
-    "tipoPrueba": "Parcial I",
-    "nota": 80,
-    "porcentaje": 30
-  },
-  {
-    "tipoPrueba": "Parcial II",
-    "nota": 70,
-    "porcentaje": 30
-  },
-  {
-    "tipoPrueba": "Proyecto",
-    "nota": 90,
-    "porcentaje": 40
-  },
-  {
-    "total": 81
-  }
-]
+let arrayNotas = [
+    [
+        {
+            "tipoPrueba": "Parcial I",
+            "nota": 80,
+            "porcentaje": 30
+        },
+        {
+            "tipoPrueba": "Parcial II",
+            "nota": 70,
+            "porcentaje": 30
+        },
+        {
+            "tipoPrueba": "Proyecto",
+            "nota": 90,
+            "porcentaje": 40
+        },
+        {
+            "total": 81
+        }
+    ]
 ]
 
 
 
 
 //guardar array en el localStorage
-if(!localStorage.getItem("notasPonderadas")){
-localStorage.setItem("notasPonderadas",JSON.stringify(arrayNotas))
+if (!localStorage.getItem("notasPonderadas")) {
+    localStorage.setItem("notasPonderadas", JSON.stringify(arrayNotas))
 }
 
 //obtener datos del localstorage
@@ -44,7 +44,7 @@ function obtenerTareas() {
 function guardarTareas(tareas) {
     localStorage.setItem("notasPonderadas", JSON.stringify(tareas));
 }
-let not=obtenerTareas()
+let not = obtenerTareas()
 
 
 
@@ -81,7 +81,7 @@ calcular.addEventListener("submit", (e) => {
     const listaPorcentajes = document.querySelectorAll(".dado")
     let listaPorcentajePonderadas = []
     let listaNotasPonderadas = []
-    let notasStorage=[]
+    let notasStorage = []
 
     listaPorcentajePonderadas = calcularPorcentajePonderado(listaPorcentajes);
 
@@ -95,20 +95,20 @@ calcular.addEventListener("submit", (e) => {
     } else {
         let cont = 0
         container_info.innerHTML = "";
-        arrayNotas=obtenerTareas()
-       
-        resultadoPonderado.textContent =  Math.ceil(totalNota / 2.5) * 2.5;
-        
+        arrayNotas = obtenerTareas()
+
+        resultadoPonderado.textContent = Math.ceil(totalNota / 2.5) * 2.5;
+
         for (const element of tipoPrueba) {
             const item = document.createElement("div")
-           
+
             item.innerHTML = `<div class="ponderado-item">
                     <span class="prueba">${element.value}</span>
                     <span class="resultado">${listaNotasPonderadas[cont].toFixed(2)}</span>
                 </div>`
-             let guardarLocalStorage={
-                "tipoPrueba":element.value,
-                "nota":Number(listaNotas[cont].value) ,
+            let guardarLocalStorage = {
+                "tipoPrueba": element.value,
+                "nota": Number(listaNotas[cont].value),
                 "porcentaje": Number(listaPorcentajes[cont].value)
             }
             notasStorage.push(guardarLocalStorage)
@@ -116,12 +116,12 @@ calcular.addEventListener("submit", (e) => {
             fragment.appendChild(item)
         }
         notasStorage.push({
-            "total":totalNota
+            "total": totalNota
         })
         arrayNotas.push(notasStorage)
         guardarTareas(arrayNotas)
-       
-        
+
+
 
         total.innerHTML = `<div class="ponderado-item">
             <span class="prueba">Total</span>
@@ -132,7 +132,7 @@ calcular.addEventListener("submit", (e) => {
 
     }
 
-        
+
 
 })
 
