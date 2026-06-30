@@ -32,14 +32,40 @@ let autocomplete = (tareas2) => {
   let html = "";
 
   for (const tarea of tareas2) {
-    html += `
-      <div class="card">
+    const colores = ["#FFD700", "#28A745", "#DC3545"];
+    
+    if(tarea.estado_inicial === "Pendiente"){
+      html += `
+      <div class="card" style="border-left: 5px solid ${colores[2]}">
         <h3>${tarea.nombre_tarea}</h3>
         <p>Materia: ${tarea.materia}</p>
         <p>Prioridad: ${tarea.prioridad}</p>
         <p>Estado: ${tarea.estado_inicial}</p>
       </div>
     `;
+    }else{
+      if(tarea.estado_inicial === "En progreso"){
+        html += `
+      <div class="card" style="border-left: 5px solid ${colores[0]}">
+        <h3>${tarea.nombre_tarea}</h3>
+        <p>Materia: ${tarea.materia}</p>
+        <p>Prioridad: ${tarea.prioridad}</p>
+        <p>Estado: ${tarea.estado_inicial}</p>
+      </div>
+    `;
+
+    }else{
+      html += `
+      <div class="card" style="border-left: 5px solid ${colores[1]}">
+        <h3>${tarea.nombre_tarea}</h3>
+        <p>Materia: ${tarea.materia}</p>
+        <p>Prioridad: ${tarea.prioridad}</p>
+        <p>Estado: ${tarea.estado_inicial}</p>
+      </div>
+    `;
+
+    }
+    
   }
 
   contenedor.innerHTML = html;
@@ -135,3 +161,4 @@ const navLinks = document.getElementById("navLinks")
 hamburguesa.addEventListener("click", () => {
   navLinks.classList.toggle("abierto")
 })
+}

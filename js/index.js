@@ -41,6 +41,8 @@ function construirCalendario() {
 
 construirCalendario()
 
+
+
 //funcion que crea el localstorage
 fetch("Json/data.json")
     .then(res => res.json())
@@ -56,12 +58,17 @@ fetch("Json/data.json")
         let activas = datos.filter(t => t.estado_inicial !== "Completada")
         document.getElementById("statActivas").textContent = activas.length
 
-        const hoy = new Date()
+      const hoy = new Date()
+        hoy.setHours(0,0,0,0)
+
         const fin = new Date()
-        fin.setDate(hoy.getDate() + 7)
+        fin.setHours(0,0,0,0)
+        fin.setDate(fin.getDate() + 7)
 
         let semana = datos.filter(t => {
             const fecha = new Date(t.fecha_limite)
+            fecha.setHours(0,0,0,0)
+
             return fecha >= hoy && fecha <= fin
         })
         document.getElementById("statSemana").textContent = semana.length

@@ -34,16 +34,26 @@ function llenarTabla() {
     const fragment = document.createDocumentFragment();
        tbody.innerHTML = ""; 
     for (const item of obtenerTareas()) {
+        let color=""
         const fila = document.createElement("tr");
         fila.id=cont++
+
+        if(item.prioridad==="Alta"){
+           color = "#ff0000";
+        }else if(item.prioridad==="Media"){
+            color="#d2ae1d";
+        }else{
+            color="#18ce0b";
+        }
         fila.innerHTML = `
             <td>${item.nombre_tarea}</td>
-            <td>${item.materia}</td>
-            <td>${item.prioridad}</td>
+            <td style="color: ${color};" > ${item.prioridad}</td>
             <td>${item.fecha_limite}</td>
-            <td>${item.estado_inicial}</td>
+             <td>${item.estado_inicial}</td>
+            <td>${item.materia}</td>
             <td>${item.puntaje_porcentaje}</td>
         `;
+        
         fragment.appendChild(fila);
     }
     tbody.appendChild(fragment);
