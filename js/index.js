@@ -43,6 +43,59 @@ construirCalendario()
 
 
 
+// =====================================================
+// Funciones para sessionStorage
+// =====================================================
+const STORAGE_USUARIO = "gestatarea_usuario"
+
+const formLoginSimulado = document.getElementById("formLoginSimulado")
+const loginNombre = document.getElementById("loginNombre")
+const loginCorreo = document.getElementById("loginCorreo")
+const btnCerrarSesion = document.getElementById("btnCerrarSesion")
+const usuarioActual = document.getElementById("usuarioActual")
+const headerUsuario = document.getElementById("headerUsuario")
+
+function guardarUsuarioSesion(usuario) {
+    sessionStorage.setItem(STORAGE_USUARIO, JSON.stringify(usuario))
+}
+
+function obtenerUsuarioSesion() {
+    const usuarioGuardado = sessionStorage.getItem(STORAGE_USUARIO)
+    if (!usuarioGuardado) {
+        return null
+    }
+    return JSON.parse(usuarioGuardado)
+}
+
+function cerrarSesion() {
+    sessionStorage.removeItem(STORAGE_USUARIO)
+    mostrarUsuarioActual()
+}
+
+function mostrarUsuarioActual() {
+    const usuario = obtenerUsuarioSesion()
+
+    if (!usuario) {
+        usuarioActual.innerHTML = `
+            <p>No hay usuario logueado.</p>
+        `
+
+        headerUsuario.innerHTML = `
+    <span class="user-offline"></span>
+    Usuario no logueado
+`
+        return
+    }
+
+    usuarioActual.innerHTML = `
+        <h4>${usuario.nombre}</h4>
+        <p>${usuario.correo}</p>
+    `
+
+    headerUsuario.innerHTML = `
+    <span class="user-online"></span>
+    ${usuario.nombre}`
+}
 //funcion que crea el localstorage
 fetch("Json/data.json")
     .then(res => res.json())
@@ -154,7 +207,34 @@ fetch("Json/data.json")
             overlay.style.display = "block"
         })
     })
+formLoginSimulado.addEventListener("submit", function (event) {
+    event.preventDefault()
+    const nombre = loginNombre.value.trim()
+    const correo = loginCorreo.value.trim()
+    if (nombre === "" || correo === "") {
+        alert("Debe ingresar nombre y correo.")
+        return
+    }
+    guardarUsuarioSesion({ nombre, correo })
+    loginNombre.value = ""
+    loginCorreo.value = ""
+    mostrarUsuarioActual()
+})
 
+btnCerrarSesion.addEventListener("click", function () {
+    cerrarSesion()
+})
+
+document.addEventListener("DOMContentLoaded", function () {
+    mostrarUsuarioActual()
+})
+
+document.addEventListener("click", function (e) {
+    const dropdown = document.querySelector(".session-dropdown")
+    if (!dropdown.contains(e.target)) {
+        dropdown.removeAttribute("open")
+    }
+})
 //navbar responsive hamburguesa
 
 const hamburguesa = document.getElementById("hamburguesa")
