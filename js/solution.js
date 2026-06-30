@@ -7,12 +7,8 @@ const btnBuscar = document.querySelector(".searchBtn")
 const inputBuscar = document.querySelector(".search__main")
 const btnLimpiar = document.querySelector(".limpiar")
 
-
-
 let tareas = []
 
-
-//Crear el localstorage o leerlo 
 fetch("Json/data.json")
   .then(res => res.json())
   .then(data => {
@@ -30,42 +26,27 @@ let jsonFilter = tareas
 //funcion para llenar todos los registros del JSON
 let autocomplete = (tareas2) => {
   let html = "";
+  const colores = ["#FFD700", "#28A745", "#DC3545"];
+  let color
 
   for (const tarea of tareas2) {
-    const colores = ["#FFD700", "#28A745", "#DC3545"];
-    
-    if(tarea.estado_inicial === "Pendiente"){
-      html += `
-      <div class="card" style="border-left: 5px solid ${colores[2]}">
-        <h3>${tarea.nombre_tarea}</h3>
-        <p>Materia: ${tarea.materia}</p>
-        <p>Prioridad: ${tarea.prioridad}</p>
-        <p>Estado: ${tarea.estado_inicial}</p>
-      </div>
-    `;
+   if(tarea.estado_inicial === "Pendiente"){
+    color=colores[2]
     }else{
       if(tarea.estado_inicial === "En progreso"){
-        html += `
-      <div class="card" style="border-left: 5px solid ${colores[0]}">
-        <h3>${tarea.nombre_tarea}</h3>
-        <p>Materia: ${tarea.materia}</p>
-        <p>Prioridad: ${tarea.prioridad}</p>
-        <p>Estado: ${tarea.estado_inicial}</p>
-      </div>
-    `;
-
-    }else{
-      html += `
-      <div class="card" style="border-left: 5px solid ${colores[1]}">
-        <h3>${tarea.nombre_tarea}</h3>
-        <p>Materia: ${tarea.materia}</p>
-        <p>Prioridad: ${tarea.prioridad}</p>
-        <p>Estado: ${tarea.estado_inicial}</p>
-      </div>
-    `;
-
+        color=colores[0]
+      }else{
+        color=colores[1]
+      }
     }
-    
+    html += `
+      <div class="card" style="border-left: 5px solid ${color}">
+        <h3>${tarea.nombre_tarea}</h3>
+        <p>Materia: ${tarea.materia}</p>
+        <p>Prioridad: ${tarea.prioridad}</p>
+        <p>Estado: ${tarea.estado_inicial}</p>
+      </div>
+    `;
   }
 
   contenedor.innerHTML = html;
@@ -145,7 +126,7 @@ btnBuscar.addEventListener("click", () => {
 
 
 
-///limpiar los valores 
+
 btnLimpiar.addEventListener("click", () => {
   inputBuscar.value = ""
   autocomplete(tareas)
@@ -161,4 +142,3 @@ const navLinks = document.getElementById("navLinks")
 hamburguesa.addEventListener("click", () => {
   navLinks.classList.toggle("abierto")
 })
-}
