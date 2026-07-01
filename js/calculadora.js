@@ -2,38 +2,6 @@ const Agregar = document.querySelector(".Agregar")
 const formContainer = document.querySelector(".text__container-form")
 const calcular = document.querySelector(".form_agregar")
 const container_info = document.querySelector(".ponderado-info__body")
-//aray Json que guardara en el localStorage
-
-let arrayNotas = [
-    [
-        {
-            "tipoPrueba": "Parcial I",
-            "nota": 80,
-            "porcentaje": 30
-        },
-        {
-            "tipoPrueba": "Parcial II",
-            "nota": 70,
-            "porcentaje": 30
-        },
-        {
-            "tipoPrueba": "Proyecto",
-            "nota": 90,
-            "porcentaje": 40
-        },
-        {
-            "total": 81
-        }
-    ]
-]
-
-
-
-
-//guardar array en el localStorage
-if (!localStorage.getItem("notasPonderadas")) {
-    localStorage.setItem("notasPonderadas", JSON.stringify(arrayNotas))
-}
 
 //obtener datos del localstorage
 function obtenerTareas() {

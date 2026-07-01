@@ -1,5 +1,35 @@
 const diasNombre = ["D", "L", "M", "X", "J", "V", "S"]
 
+let arrayNotas = [
+    [
+        {
+            "tipoPrueba": "Parcial I",
+            "nota": 80,
+            "porcentaje": 30
+        },
+        {
+            "tipoPrueba": "Parcial II",
+            "nota": 70,
+            "porcentaje": 30
+        },
+        {
+            "tipoPrueba": "Proyecto",
+            "nota": 90,
+            "porcentaje": 40
+        },
+        {
+            "total": 81
+        }
+    ]
+]
+
+//guardar array en el localStorage
+if (!localStorage.getItem("notasPonderadas")) {
+    localStorage.setItem("notasPonderadas", JSON.stringify(arrayNotas))
+}
+
+const estado=1
+
 
 //crear el calendario
 function construirCalendario() {
@@ -96,6 +126,44 @@ function mostrarUsuarioActual() {
     <span class="user-online"></span>
     ${usuario.nombre}`
 }
+
+
+
+//Crear el usuario con el formulario
+formLoginSimulado.addEventListener("submit", function (event) {
+    event.preventDefault()
+    const nombre = loginNombre.value.trim()
+    const correo = loginCorreo.value.trim()
+    if (nombre === "" || correo === "") {
+        alert("Debe ingresar nombre y correo.")
+        return
+    }
+    guardarUsuarioSesion({ nombre, correo, estado })
+    loginNombre.value = ""
+    loginCorreo.value = ""
+    mostrarUsuarioActual()
+    roles()
+})
+
+btnCerrarSesion.addEventListener("click", function () {
+    cerrarSesion()
+    roles()
+})
+
+document.addEventListener("DOMContentLoaded", function () {
+    mostrarUsuarioActual()
+})
+
+document.addEventListener("click", function (e) {
+    const dropdown = document.querySelector(".session-dropdown")
+    if (!dropdown.contains(e.target)) {
+        dropdown.removeAttribute("open")
+    }
+})
+
+
+
+
 //funcion que crea el localstorage
 fetch("Json/data.json")
     .then(res => res.json())
@@ -207,34 +275,52 @@ fetch("Json/data.json")
             overlay.style.display = "block"
         })
     })
-formLoginSimulado.addEventListener("submit", function (event) {
-    event.preventDefault()
-    const nombre = loginNombre.value.trim()
-    const correo = loginCorreo.value.trim()
-    if (nombre === "" || correo === "") {
-        alert("Debe ingresar nombre y correo.")
-        return
+
+
+
+   function roles() {
+    let obtener = obtenerUsuarioSesion();
+    let btn1 = document.querySelector(".btn-naranja");
+    let btn2 = document.querySelector(".btn-gris");
+
+    let data = document.querySelectorAll(".o-item");
+
+    if (obtener === null) {
+        for (const element of data) {
+            element.style.display = "none";
+        }
+
+        btn1.style.pointerEvents = "none";
+        btn1.style.opacity = "0.5";
+        btn2.style.pointerEvents = "none";
+        btn2.style.opacity = "0.5";
+    } else {
+        for (const element of data) {
+            element.style.display = "inherit";
+        }
+        btn1.style.pointerEvents = "auto";
+        btn1.style.opacity = "1";
+        btn2.style.pointerEvents = "auto";
+        btn2.style.opacity = "1";
     }
-    guardarUsuarioSesion({ nombre, correo })
-    loginNombre.value = ""
-    loginCorreo.value = ""
-    mostrarUsuarioActual()
-})
+}
 
-btnCerrarSesion.addEventListener("click", function () {
-    cerrarSesion()
-})
 
-document.addEventListener("DOMContentLoaded", function () {
-    mostrarUsuarioActual()
-})
+  function obtenerTareas() {
+    return JSON.parse(localStorage.getItem("notasPonderadas")) ?? [];
+  }
+  function mostrarIndex(){
+      const notas = obtenerTareas();
+  let numeroCalculadora = document.querySelector(".notas1")
+  let promedio = document.querySelector(".promedio")
+  let cont = 0
+  promedio.textContent = notas.at(-1).at(-1).total + " %";
+  numeroCalculadora.textContent = notas.length
 
-document.addEventListener("click", function (e) {
-    const dropdown = document.querySelector(".session-dropdown")
-    if (!dropdown.contains(e.target)) {
-        dropdown.removeAttribute("open")
-    }
-})
+  }
+roles()
+mostrarIndex()
+
 //navbar responsive hamburguesa
 
 const hamburguesa = document.getElementById("hamburguesa")

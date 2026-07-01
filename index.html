@@ -18,11 +18,11 @@
     </div>
     <button class="hamburguesa" id="hamburguesa">&#9776;</button>
     <div class="nav-links" id="navLinks">
-      <a href="index.html" class="active">Inicio</a>
-      <a href="MisTareas.html">Mis Tareas</a>
-      <a href="Registrar.html">Registrar Tarea</a>
-      <a href="Notas.html">Notas</a>
-      <a href="Calculadora.html">Calculadora de Notas</a>
+      <a  href="index.html" class="active">Inicio</a>
+      <a class="o-item" href="MisTareas.html">Mis Tareas</a>
+      <a class="o-item" href="Registrar.html">Registrar Tarea</a>
+      <a class="o-item" href="Notas.html">Notas</a>
+      <a class="o-item" href="Calculadora.html">Calculadora de Notas</a>
       <div class="header-session-area">
         <details class="session-dropdown">
           <summary id="headerUsuario" class="header-user">
@@ -108,40 +108,35 @@
     </div>
   </div>
 
-  <!-- MODAL -->
-  <div id="modalOverlay"
-    style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:999;display:none">
-    <div id="modalBox"
-      style="background:#1e1e2e;color:white;max-width:420px;width:90%;margin:8% auto;padding:28px;border-radius:16px;position:relative;box-shadow:0 8px 32px rgba(0,0,0,0.4)">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
-        <h3 id="modalTitulo" style="margin:0;font-size:18px"></h3>
-        <span id="modalCerrar" style="cursor:pointer;font-size:20px;opacity:0.6;line-height:1">&times;</span>
-      </div>
-      <div id="modalContenido"></div>
-    </div>
-  </div>
-  <!-- FOOTER -->
-  <div class="footer">
-    <span class="footer-link">&#9312; utn.ac.cr</span>
-    <p class="footer-desc" id="btnProblema" style="cursor:pointer">GestaTarea &mdash; Dise&ntilde;ada para estudiantes
-      de la <b>UTN</b>.<br>Administra tus compromisos acad&eacute;micos con claridad. <span
-        style="font-size:11px;opacity:0.6">Ver más</span></p>
-    <span class="footer-copy">&copy; 2026 GestaTarea</span>
-  </div>
+ <!-- MODAL -->
+<div id="modalOverlay" class="modal-overlay">
+    <div id="modalBox" class="modal-box">
+        <div class="modal-header">
+            <h3 id="modalTitulo"></h3>
+            <span id="modalCerrar">&times;</span>
+        </div>
 
+        <div id="modalContenido"></div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <span class="footer-link">&#9312; utn.ac.cr</span>
+
+    <p class="footer-desc" id="btnProblema">
+        GestaTarea &mdash; Diseñada para estudiantes de la <b>UTN</b>.<br>
+        Administra tus compromisos académicos con claridad.
+        <span class="footer-vermas">Ver más</span>
+    </p>
+
+    <span class="footer-copy">&copy; 2026 GestaTarea</span>
+</footer>
 
 </body>
 <script src="js/index.js"></script>
 <script>
-  function obtenerTareas() {
-    return JSON.parse(localStorage.getItem("notasPonderadas")) ?? [];
-  }
-  const notas = obtenerTareas();
-  let numeroCalculadora = document.querySelector(".notas1")
-  let promedio = document.querySelector(".promedio")
-  let cont = 0
-  promedio.textContent = notas.at(-1).at(-1).total + " %";
-  numeroCalculadora.textContent = notas.length
+
 
 
 </script>
