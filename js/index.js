@@ -24,6 +24,8 @@ let arrayNotas = [
 ]
 
 //guardar array en el localStorage
+localStorage.removeItem("data")
+localStorage.removeItem("notasPonderadas")
 if (!localStorage.getItem("notasPonderadas")) {
     localStorage.setItem("notasPonderadas", JSON.stringify(arrayNotas))
 }
